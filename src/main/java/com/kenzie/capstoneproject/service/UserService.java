@@ -34,6 +34,7 @@ public class UserService {
 		user.setPassword(user.getPassword());
 		user.setEmail(user.getEmail());
 		user.setPhoneNo(user.getPhoneNo());
+		user.setRole(user.getRole());
 		user.setId(id);
 		repo.saveAndFlush(user);
 	}

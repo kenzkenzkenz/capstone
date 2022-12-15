@@ -40,6 +40,9 @@ public class User {
 	@Column(name="phoneNo")
 	private String phoneNo;
 	
+	@Column(name="role")
+	private String role;
+	
 	@Column(name="createdAt")
 	private String createdAt; //datetime
 	
