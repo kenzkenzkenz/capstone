@@ -39,6 +39,8 @@ public class AddressService {
 		address.setState(address.getState());
 		address.setCountry(address.getCountry());
 		address.setZip(address.getZip());
+		address.setIsShipping(address.getIsShipping());
+		address.setIsBilling(address.getIsBilling());
 		repo.saveAndFlush(address);
 	}
 

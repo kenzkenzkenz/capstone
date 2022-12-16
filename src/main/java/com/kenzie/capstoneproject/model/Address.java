@@ -19,8 +19,11 @@ import lombok.NoArgsConstructor;
 public class Address {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	
-	@Column(name="userId")
+	@Column(name="id")
 	private Integer id;
+	
+	@Column(name="userId")
+	private Integer userId;
 	
 	@Column(name="street")
 	private String street;
@@ -36,4 +39,10 @@ public class Address {
 	
 	@Column(name="zip")
 	private String zip;
+	
+	@Column(name="isShipping")
+	private Boolean isShipping;
+	
+	@Column(name="isBilling")
+	private Boolean isBilling;
 }

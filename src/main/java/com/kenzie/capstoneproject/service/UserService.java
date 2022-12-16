@@ -12,22 +12,28 @@ public class UserService {
 	@Autowired
 	private UserRepository repo;
 
+	//READ/GET all users
 	public List<User> listAllUser() {
 		return repo.findAll();
 
 	}
+	
+	//CREATE/POST user
 	public void createUser(User user) {
 		  repo.save(user);
 	}
 	
+	//READ/GET user
 	public Optional<User> getUsersById(Integer id) {
 		return repo.findById(id);
 	}
 	
+	//DELETE user
 	public void deleteUser(Integer id) {
 		repo.deleteById(id);
 	}
 	
+	//UPDATE/PUT user
 	public void updateUser(User user, Integer id) {
 		user.setFirstName(user.getFirstName());
 		user.setLastName(user.getLastName());
@@ -35,6 +41,7 @@ public class UserService {
 		user.setEmail(user.getEmail());
 		user.setPhoneNo(user.getPhoneNo());
 		user.setRole(user.getRole());
+		user.setCartId(user.getCartId());
 		user.setId(id);
 		repo.saveAndFlush(user);
 	}

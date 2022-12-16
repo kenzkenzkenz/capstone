@@ -41,12 +41,21 @@ public class User {
 	private String phoneNo;
 	
 	@Column(name="role")
-	private String role;
+	private String role = "customer";
+	
+	@Column(name="cartId")
+	private Integer cartId;
+	
+	@Column(name="shippingAddressId")
+	private Integer shippingAddressId;
+	
+	@Column(name="billingAddressId")
+	private Integer billingAddressId;
 	
 	@Column(name="createdAt")
-	private String createdAt; //datetime
+	private String createdAt; //TODO automate this
 	
 	@Column(name="updatedAt")
-	private String updatedAt; //datetime
+	private String updatedAt; //TODO automate this
 
 }
