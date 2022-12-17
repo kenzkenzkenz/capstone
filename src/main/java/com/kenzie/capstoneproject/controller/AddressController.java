@@ -39,18 +39,19 @@ public class AddressController {
 			return null;//404
 		}
 	}
-	@PostMapping("/address")
-	public void addAddress(@RequestBody Address address) {
-		service.createAddress(address);
+
+	@PostMapping("/user/{id}/address/create") //how to link this method to a particular userId??
+	public void addAddress(@RequestBody Address address, @PathVariable Integer id) {	////NOT WORKING//////
+		service.createAddress(address, id);
 	}
 	
-	@DeleteMapping("/address/{id}")
+	@DeleteMapping("/address/delete/{id}")
 	public void deleteAddress(@PathVariable Integer id) {
 		service.deleteAddress(id);
 	}
 	
 	//just added for the update method
-	@PutMapping("/address/{id}")
+	@PutMapping("/address/update/{id}")
 	public void updateAddress(@RequestBody Address address, @PathVariable Integer id) {
 		service.updateAddress(address, id);
 	}

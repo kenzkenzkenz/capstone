@@ -22,12 +22,12 @@ import com.kenzie.capstoneproject.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService service;	
-	@GetMapping("/users")
+	@GetMapping("/user")
 	public List<User> listALL(){
 		System.out.println("Testing");
 		return service.listAllUser();
 	}	
-	@GetMapping("/users/{id}")
+	@GetMapping("/user/{id}")
 	public Optional<User> getUserById(@PathVariable Integer id){
 		try {
 		Optional<User> user=service.getUsersById(id);
@@ -37,18 +37,18 @@ public class UserController {
 			return null;//404
 		}
 	}
-	@PostMapping("/users")
+	@PostMapping("/user/create")
 	public void addUser(@RequestBody User user) {
 		service.createUser(user);
 	}
 	
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/user/delete/{id}")
 	public void deleteUser(@PathVariable Integer id) {
 		service.deleteUser(id);
 	}
 	
 	//just added for the update method
-	@PutMapping("/users/{id}")
+	@PutMapping("/user/update/{id}")
 	public void updateUser(@RequestBody User user, @PathVariable Integer id) {
 		service.updateUser(user, id);
 	}

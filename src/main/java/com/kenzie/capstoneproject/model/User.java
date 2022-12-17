@@ -1,11 +1,16 @@
 package com.kenzie.capstoneproject.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +23,6 @@ import lombok.NoArgsConstructor;
 @Table(name="user")
 public class User {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	
 	@Column(name="userId")
 	private Integer id;
 	
@@ -46,16 +50,16 @@ public class User {
 	@Column(name="cartId")
 	private Integer cartId;
 	
-	@Column(name="shippingAddressId")
-	private Integer shippingAddressId;
-	
-	@Column(name="billingAddressId")
-	private Integer billingAddressId;
-	
 	@Column(name="createdAt")
 	private String createdAt; //TODO automate this
 	
 	@Column(name="updatedAt")
 	private String updatedAt; //TODO automate this
+	
+	@OneToMany(mappedBy = "user")
+	private List<Address>shippingAddressId; //creates address column but no connection to the address entered
+	
+	@OneToMany(mappedBy = "user")
+	private List<Address>billingAddressId; //creates address column but no connection to the address entered
 
 }

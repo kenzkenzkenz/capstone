@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,12 +20,12 @@ import lombok.NoArgsConstructor;
 @Table(name="address")
 public class Address {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	
 	@Column(name="id")
 	private Integer id;
-	
-	@Column(name="userId")
-	private Integer userId;
+
+	@ManyToOne
+	@JoinColumn(name="userId", nullable = false)
+	private User user;
 	
 	@Column(name="street")
 	private String street;
@@ -45,4 +47,5 @@ public class Address {
 	
 	@Column(name="isBilling")
 	private Boolean isBilling;
+	
 }

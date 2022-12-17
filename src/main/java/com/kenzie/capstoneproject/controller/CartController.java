@@ -15,42 +15,42 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kenzie.capstoneproject.model.Product;
-import com.kenzie.capstoneproject.service.ProductService;
+import com.kenzie.capstoneproject.model.Cart;
+import com.kenzie.capstoneproject.service.CartService;
 
 @RestController
-public class ProductController {
+public class CartController {
 	@Autowired
-	private ProductService service;	
-	@GetMapping("/product")
-	public List<Product> listALL(){
+	private CartService service;	
+	@GetMapping("/cart")
+	public List<Cart> listALL(){
 		System.out.println("Testing");
-		return service.listAllProduct();
+		return service.listAllCart();
 	}	
-	@GetMapping("/product/{id}")
-	public Optional<Product> getProductById(@PathVariable Integer id){
+	@GetMapping("/cart/{id}")
+	public Optional<Cart> getCartById(@PathVariable Integer id){
 		try {
-		Optional<Product> product=service.getProductById(id);
-		System.out.println(product);
-		return product;//200
+		Optional<Cart> cart=service.getCartById(id);
+		System.out.println(cart);
+		return cart;//200
 		}catch(NoSuchElementException e) {
 			return null;//404
 		}
 	}
-	@PostMapping("/product/create")
-	public void addProduct(@RequestBody Product product) {
-		service.createProduct(product);
+	@PostMapping("/cart/create")
+	public void addCart(@RequestBody Cart cart) {
+		service.createCart(cart);
 	}
 	
-	@DeleteMapping("/product/delete/{id}")
-	public void deleteProduct(@PathVariable Integer id) {
-		service.deleteProduct(id);
+	@DeleteMapping("/cart/delete/{id}")
+	public void deleteCart(@PathVariable Integer id) {
+		service.deleteCart(id);
 	}
 	
 	//just added for the update method
-	@PutMapping("/product/update/{id}")
-	public void updateProduct(@RequestBody Product product, @PathVariable Integer id) {
-		service.updateProduct(product, id);
+	@PutMapping("/cart/update/{id}")
+	public void updateCart(@RequestBody Cart cart, @PathVariable Integer id) {
+		service.updateCart(cart, id);
 	}
 	
 	

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -15,25 +17,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="Product")
-public class Product {
+@Table(name="Cart")
+public class Cart {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="cartId")
+	private Integer cartId;
 	
-	@Column(name="productId")
-	private Integer productId;
-	
-	@Column(name="productQuantity")
-	private Integer productQuantity;
-	
-	@Column(name="productName")
-	private String productName;
-	
-	@Column(name="blobs")
-	private String blobs = "Cloud link goes here.";
-	
-	@Column(name="pricePerUnit")
-	private Double pricePerUnit;
-	
-	@Column(name="productDesc")
-	private String productDesc;
+//	@OneToOne
+//	@JoinColumn(name="orderItemId", nullable=false)
+//	private Integer orderItemId; //foreign key to orderItem table
 }

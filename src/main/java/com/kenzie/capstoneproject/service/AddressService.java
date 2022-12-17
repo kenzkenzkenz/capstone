@@ -21,7 +21,7 @@ public class AddressService {
 		return repo.findAll();
 
 	}
-	public void createAddress(Address address) {
+	public void createAddress(Address address, Integer id) {
 		  repo.save(address);
 	}
 	
@@ -41,6 +41,8 @@ public class AddressService {
 		address.setZip(address.getZip());
 		address.setIsShipping(address.getIsShipping());
 		address.setIsBilling(address.getIsBilling());
+		//address.setUser(address.getUser());
+		address.setId(id);
 		repo.saveAndFlush(address);
 	}
 
