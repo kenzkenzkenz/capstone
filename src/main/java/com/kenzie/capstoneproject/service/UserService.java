@@ -41,8 +41,9 @@ public class UserService {
 		user.setEmail(user.getEmail());
 		user.setPhoneNo(user.getPhoneNo());
 		user.setRole(user.getRole());
-		user.setCartId(user.getCartId());
-		user.setId(id);
+		//user.setCartId(user.getCartId());
+		user.setAddresses(user.getAddresses());
+		user.setUserId(user.getUserId());
 		repo.saveAndFlush(user);
 	}
 

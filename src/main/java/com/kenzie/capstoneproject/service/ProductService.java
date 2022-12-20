@@ -43,6 +43,7 @@ public class ProductService {
 		product.setBlobs(product.getBlobs());
 		product.setPricePerUnit(product.getPricePerUnit());
 		product.setProductDesc(product.getProductDesc());
+		product.setProductId(id);
 		repo.saveAndFlush(product);
 	}
 

@@ -9,6 +9,7 @@ import com.kenzie.capstoneproject.repo.AddressRepository;
 import com.kenzie.capstoneproject.repo.UserRepository;
 
 import com.kenzie.capstoneproject.model.User;
+import com.kenzie.capstoneproject.service.UserService;
 import com.kenzie.capstoneproject.model.Address;
 
 
@@ -21,8 +22,9 @@ public class AddressService {
 		return repo.findAll();
 
 	}
-	public void createAddress(Address address, Integer id) {
-		  repo.save(address);
+	public void createAddress(Address address) {
+		//address.
+		repo.save(address);
 	}
 	
 	public Optional<Address> getAddressById(Integer id) {
@@ -41,8 +43,8 @@ public class AddressService {
 		address.setZip(address.getZip());
 		address.setIsShipping(address.getIsShipping());
 		address.setIsBilling(address.getIsBilling());
-		//address.setUser(address.getUser());
-		address.setId(id);
+		address.setAddressId(id);
+		address.setUserId(address.getUserId());
 		repo.saveAndFlush(address);
 	}
 

@@ -37,18 +37,18 @@ public class ProductController {
 			return null;//404
 		}
 	}
-	@PostMapping("/product/create")
+	@PostMapping("/product")
 	public void addProduct(@RequestBody Product product) {
 		service.createProduct(product);
 	}
 	
-	@DeleteMapping("/product/delete/{id}")
+	@DeleteMapping("/product/{id}")
 	public void deleteProduct(@PathVariable Integer id) {
 		service.deleteProduct(id);
 	}
 	
 	//just added for the update method
-	@PutMapping("/product/update/{id}")
+	@PutMapping("/product/{id}")
 	public void updateProduct(@RequestBody Product product, @PathVariable Integer id) {
 		service.updateProduct(product, id);
 	}

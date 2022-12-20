@@ -37,18 +37,18 @@ public class UserController {
 			return null;//404
 		}
 	}
-	@PostMapping("/user/create")
+	@PostMapping("/user")
 	public void addUser(@RequestBody User user) {
 		service.createUser(user);
 	}
 	
-	@DeleteMapping("/user/delete/{id}")
+	@DeleteMapping("/user/{id}")
 	public void deleteUser(@PathVariable Integer id) {
 		service.deleteUser(id);
 	}
 	
 	//just added for the update method
-	@PutMapping("/user/update/{id}")
+	@PutMapping("/user/{id}")
 	public void updateUser(@RequestBody User user, @PathVariable Integer id) {
 		service.updateUser(user, id);
 	}
