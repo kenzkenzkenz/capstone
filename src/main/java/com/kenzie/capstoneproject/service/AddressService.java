@@ -44,7 +44,7 @@ public class AddressService {
 		address.setIsShipping(address.getIsShipping());
 		address.setIsBilling(address.getIsBilling());
 		address.setAddressId(id);
-		address.setUserId(address.getUserId());
+		//address.setUserId(userId);
 		repo.saveAndFlush(address);
 	}
 

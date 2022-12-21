@@ -15,8 +15,6 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 	@Autowired
 	private EmailService service;
 	
-	@Autowired AddressRepository addressRepo;
-	@Autowired UserRepository userRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CapstoneProjectApplication.class, args);

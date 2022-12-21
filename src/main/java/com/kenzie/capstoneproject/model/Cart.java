@@ -1,28 +1,40 @@
-//package com.kenzie.capstoneproject.model;
-//
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.OneToOne;
-//import javax.persistence.Table;
-//
-//import lombok.AllArgsConstructor;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
-//
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
-//@Entity
-//@Table(name="cart")
-//public class Cart {
-//	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-//	private int cartId;
-//	
-////	@OneToOne
-////	@JoinColumn(name="orderItemId", nullable=false)
-////	private Integer orderItemId; //foreign key to orderItem table
-//}
+package com.kenzie.capstoneproject.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name="cart")
+public class Cart {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="cart_id")
+	private int cartId;
+	
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private User user;
+	
+    @OneToMany(targetEntity=OrderItem.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderItemId")
+    private List<OrderItem> orderItems;
+}

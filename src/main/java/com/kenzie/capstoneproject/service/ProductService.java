@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import com.kenzie.capstoneproject.repo.ProductRepository;
 import com.kenzie.capstoneproject.model.Product;
 
-
-
 @Service
 public class ProductService {
 	@Autowired

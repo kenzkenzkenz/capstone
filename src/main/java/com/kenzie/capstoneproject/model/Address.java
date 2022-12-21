@@ -1,7 +1,9 @@
 package com.kenzie.capstoneproject.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,43 +24,32 @@ import lombok.NoArgsConstructor;
 public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="address_id")
 	private int addressId;
+	
+	@Column(name="street")
 	private String street;
+	
+	@Column(name="city")
 	private String city;
+	
+	@Column(name="state")
 	private String state;
+	
+	@Column(name="country")
 	private String country;
+	
+	@Column(name="zip")
 	private String zip;
+	
+	@Column(name="is_shipping")
 	private Boolean isShipping;
+	
+	@Column(name="is_billing")
 	private Boolean isBilling;
-	private User userId;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
-	
-//	@Column(name="addressId")
-//	private Integer addressId;
-//
-//	
-//	@Column(name="street")
-//	private String street;
-//	
-//	@Column(name="city")
-//	private String city;
-//	
-//	@Column(name="state")
-//	private String state;
-//	
-//	@Column(name="country")
-//	private String country;
-//	
-//	@Column(name="zip")
-//	private String zip;
-//	
-//	@Column(name="isShipping")
-//	private Boolean isShipping;
-//	
-//	@Column(name="isBilling")
-//	private Boolean isBilling;
 	
 }

@@ -35,15 +35,13 @@ public class UserService {
 	
 	//UPDATE/PUT user
 	public void updateUser(User user, Integer id) {
+		user.setUserName(user.getUserName());
+		user.setPassword(user.getPassword());
 		user.setFirstName(user.getFirstName());
 		user.setLastName(user.getLastName());
-		user.setPassword(user.getPassword());
 		user.setEmail(user.getEmail());
 		user.setPhoneNo(user.getPhoneNo());
-		user.setRole(user.getRole());
-		//user.setCartId(user.getCartId());
-		user.setAddresses(user.getAddresses());
-		user.setUserId(user.getUserId());
+		user.setUserId(id);
 		repo.saveAndFlush(user);
 	}
 
