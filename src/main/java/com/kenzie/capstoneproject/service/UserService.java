@@ -42,6 +42,7 @@ public class UserService {
 		user.setEmail(user.getEmail());
 		user.setPhoneNo(user.getPhoneNo());
 		user.setUserId(id);
+		user.setAddresses(user.getAddresses());
 		repo.saveAndFlush(user);
 	}
 

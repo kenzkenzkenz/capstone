@@ -23,7 +23,6 @@ public class AddressService {
 
 	}
 	public void createAddress(Address address) {
-		//address.
 		repo.save(address);
 	}
 	
@@ -44,7 +43,7 @@ public class AddressService {
 		address.setIsShipping(address.getIsShipping());
 		address.setIsBilling(address.getIsBilling());
 		address.setAddressId(id);
-		//address.setUserId(userId);
+		address.setUser(address.getUser());
 		repo.saveAndFlush(address);
 	}
 

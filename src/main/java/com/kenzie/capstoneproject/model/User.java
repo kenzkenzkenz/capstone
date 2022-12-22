@@ -1,12 +1,7 @@
 package com.kenzie.capstoneproject.model;
 
-import java.util.*;
 import java.util.List;
-
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,13 +39,9 @@ public class User {
 	@Column(name="role")
 	private String role = "customer";
 	
-//	//@JsonBackReference
-//	//@JsonIgnore
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)//if have orphanRemoval=true, postman gives errors on Update
-//	private List<Address> addresses;
-	
+	//THIS CREATES A COLUMN FOR ADDRESS LIST
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressId")
+    //@JoinColumn(name = "addressId")
     private List<Address> addresses;
     
 
