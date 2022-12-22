@@ -49,7 +49,6 @@ public class User {
 //	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)//if have orphanRemoval=true, postman gives errors on Update
 //	private List<Address> addresses;
 	
-	@JsonBackReference
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressId")
     private List<Address> addresses;
