@@ -13,22 +13,22 @@ import lombok.NoArgsConstructor;
 public class OrderItem {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="order_item_id")
-	private int orderItemId;
+	@Column(name="orderItemId")
+	private Integer orderItemId;
 	
 	@Column(name="quantity")
-	private int quantity;
+	private Integer quantity;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cartId")
+	private Cart cart;
 	
-//	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "orderItemId")
-//	private TotalOrder totalOrder; //foreign key to totalOrder
-//	
-//	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "orderItemId")
-//	private Cart cart; //foreign key to totalOrder
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "totalOrderId")
+	private TotalOrder totalOrder;
 	
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="product_id", nullable=false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="productId")
     private Product product; //foreign key to product
 	
 }

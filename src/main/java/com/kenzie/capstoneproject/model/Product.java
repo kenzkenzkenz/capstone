@@ -28,26 +28,23 @@ import lombok.NoArgsConstructor;
 public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="product_id")
-	private int productId;
+	@Column(name="productId")
+	private Integer productId;
 	
-	@Column(name="product_quantity")
-	private int productQuantity;
+	@Column(name="productQuantity")
+	private Integer productQuantity;
 	
-	@Column(name="product_name")
+	@Column(name="productName")
 	private String productName;
 	
 	@Column(name="blobs")
 	private String blobs = "Cloud link goes here.";
 	
-	@Column(name="price_per_unit")
+	@Column(name="pricePerUnit")
 	private Double pricePerUnit;
 	
-	@Column(name="product_desc")
+	@Column(name="productDesc")
 	private String productDesc;
 	
-//	@JsonIgnore
-//    @OneToMany(mappedBy="totalOrder", fetch = FetchType.LAZY, orphanRemoval = true)
-//    private List<OrderItem> orderItems;
 	
 }

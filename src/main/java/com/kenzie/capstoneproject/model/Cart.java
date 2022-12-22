@@ -28,13 +28,13 @@ import lombok.NoArgsConstructor;
 public class Cart {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="cart_id")
-	private int cartId;
+	@Column(name="cartId")
+	private Integer cartId;
 	
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId")
 	private User user;
 	
-    @OneToMany(targetEntity=OrderItem.class,cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "orderItemId")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cart")
     private List<OrderItem> orderItems;
 }

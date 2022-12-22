@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +26,8 @@ import lombok.NoArgsConstructor;
 public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="address_id")
-	private int addressId;
+	@Column(name="addressId")
+	private Integer addressId;
 	
 	@Column(name="street")
 	private String street;
@@ -42,14 +44,15 @@ public class Address {
 	@Column(name="zip")
 	private String zip;
 	
-	@Column(name="is_shipping")
+	@Column(name="isShipping")
 	private Boolean isShipping;
 	
-	@Column(name="is_billing")
+	@Column(name="isBilling")
 	private Boolean isBilling;
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+//	@JsonIgnore
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "userId", nullable=false)
+//	private User user;
 	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -19,39 +20,42 @@ import lombok.NoArgsConstructor;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="user_id")
-	private int userId;
+	@Column(name="userId")
+	private Integer userId;
 	
-	@Column(name="user_name")
+	@Column(name="userName")
 	private String userName;
 	
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="first_name")
+	@Column(name="firstName")
 	private String firstName;
 	
-	@Column(name="last_name")
+	@Column(name="lastName")
 	private String lastName;
 	
 	@Column(name="email")
 	private String email;
 	
-	@Column(name="phone_no")
+	@Column(name="phoneNo")
 	private String phoneNo;
 	
 	@Column(name="role")
 	private String role = "customer";
 	
-	@JsonIgnore
-	@OneToOne(mappedBy="user")
-	private Cart cart;
-
+//	//@JsonBackReference
+//	//@JsonIgnore
+//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)//if have orphanRemoval=true, postman gives errors on Update
+//	private List<Address> addresses;
 	
-    @OneToMany(mappedBy="user")
+	@JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "addressId")
     private List<Address> addresses;
+    
 
-	@JsonIgnore
-    @OneToMany(mappedBy="user")
-    private List<TotalOrder> totalOrders;
+//	//@JsonBackReference
+//	@OneToMany(mappedBy = "user")//if have orphanRemoval=true, postman gives errors on Update
+//	private List<TotalOrder> totalOrders;
 }

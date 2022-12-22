@@ -16,33 +16,32 @@ import lombok.NoArgsConstructor;
 public class TotalOrder {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="total_order_id")
-	private int totalOrderId;
+	@Column(name="totalOrderId")
+	private Integer totalOrderId;
 	
-	@Column(name="order_date")
+	@Column(name="orderDate")
 	private java.sql.Date orderDate;
 	
-	@Column(name="tracking_id")
+	@Column(name="trackingId")
 	private String trackingId;
 	
-	@Column(name="total_price")
+	@Column(name="totalPrice")
 	private Double totalPrice;
 	
-	@Column(name="order_status")
+	@Column(name="orderStatus")
 	private String orderStatus;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "user_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId")
 	private User user; //foreign key to user
 	
-//	@JsonIgnore
-//    @OneToMany(mappedBy="totalOrder", fetch = FetchType.LAZY, orphanRemoval = true)
-//    private List<OrderItem> orderItems;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "totalOrder", orphanRemoval = true)
+    private List<OrderItem> orderItems;
 	
-	@OneToOne
-	private Address billingAddress; //foreign key to address
-	
-	@OneToOne
-	private Address shippingAddress; //foreign key to address
+//	@OneToOne
+//	private Address billingAddress; //foreign key to address
+//	
+//	@OneToOne
+//	private Address shippingAddress; //foreign key to address
 	
 }
