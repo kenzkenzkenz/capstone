@@ -34,7 +34,7 @@ public class User {
 	private String lastName;
 	
 	@Column(name="role")
-	private String role = "customer";
+	private String role; //can be either customer or admin
     
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval=true)

@@ -39,11 +39,14 @@ public class TotalOrder {
 	@ManyToOne
 	@JoinColumn(name = "userId", nullable=false)
 	private User user;
+
+	@OneToOne
+	@JoinColumn(name="isShipping")//how to link this if Address field isShipping=true?
+	private Address shippingAddress;
 	
-//	@OneToOne
-//	private Address billingAddress; //foreign key to address
-//	
-//	@OneToOne
-//	private Address shippingAddress; //foreign key to address
+	@OneToOne
+	@JoinColumn(name="isBilling")//how to link this if Address field isBilling=true?
+	private Address billingAddress;
+	
 	
 }
