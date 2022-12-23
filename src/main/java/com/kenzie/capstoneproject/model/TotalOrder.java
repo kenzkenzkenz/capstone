@@ -30,7 +30,7 @@ public class TotalOrder {
 	@Column(name="orderStatus")
 	private String orderStatus;
 	
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "totalOrder")//orphanRemoval=true leads to error??
+    @OneToMany(mappedBy="totalOrder", fetch = FetchType.LAZY)//orphanRemoval=true leads to error??
     private List<OrderItem> orderItems;
     
 	@ManyToOne(fetch = FetchType.LAZY)

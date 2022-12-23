@@ -37,10 +37,10 @@ public class User {
 	private String role = "customer";
     
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//orphanRemoval=true leads to error upon get by id
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval=true)//orphanRemoval=true leads to error upon get by id
     private List<Address> addresses;
     
     @JsonIgnore
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "user")
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
 	private List<TotalOrder> totalOrders;
 }

@@ -49,7 +49,7 @@ public class Address {
 	@Column(name="phoneNumber")
 	private String phoneNumber;
 	
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name ="userId", nullable=false)
     private User user;
 	

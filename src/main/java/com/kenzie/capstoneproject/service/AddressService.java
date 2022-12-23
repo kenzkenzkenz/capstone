@@ -37,8 +37,8 @@ public class AddressService {
 		address.setIsShipping(address.getIsShipping());
 		address.setIsBilling(address.getIsBilling());
 		address.setPhoneNumber(address.getPhoneNumber());
-		address.setAddressId(id);
 		address.setUser(address.getUser());
+		address.setAddressId(id);
 		repo.saveAndFlush(address);
 	}
 
