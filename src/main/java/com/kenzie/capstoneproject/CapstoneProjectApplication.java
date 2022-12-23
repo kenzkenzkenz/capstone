@@ -18,12 +18,12 @@ public class CapstoneProjectApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CapstoneProjectApplication.class, args);
-		System.out.println("this is a test");
+		System.out.println("the program is ready");
 	}
 	
 	@Override
 	public void run(String... args) throws Exception {
-		service.sendEMail("test@yahoo.com", "blahblahblah", "this is a message from the past");
+		service.sendEMail("Kenzie","userman@yahoo.com", "Welcome", "Thank you for registering.");
 	}
 
 }

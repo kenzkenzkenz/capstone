@@ -1,6 +1,5 @@
 package com.kenzie.capstoneproject.model;
 
-import java.util.*;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,17 +17,13 @@ public class OrderItem {
 	
 	@Column(name="quantity")
 	private Integer quantity;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cartId")
-	private Cart cart;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "totalOrderId")
-	private TotalOrder totalOrder;
 	
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="productId")
-    private Product product; //foreign key to product
+    @JoinColumn(name="productId", nullable=false)
+    private Product product;
+	
+	@ManyToOne
+	@JoinColumn(name = "totalOrderId", nullable=false)
+	private TotalOrder totalOrder;
 	
 }

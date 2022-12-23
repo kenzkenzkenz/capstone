@@ -24,7 +24,7 @@ public class UserService {
 	}
 	
 	//READ/GET user
-	public Optional<User> getUsersById(Integer id) {
+	public Optional<User> getUserById(Integer id) {
 		return repo.findById(id);
 	}
 	
@@ -35,14 +35,12 @@ public class UserService {
 	
 	//UPDATE/PUT user
 	public void updateUser(User user, Integer id) {
-		user.setUserName(user.getUserName());
+		user.setEmail(user.getEmail());
 		user.setPassword(user.getPassword());
 		user.setFirstName(user.getFirstName());
 		user.setLastName(user.getLastName());
-		user.setEmail(user.getEmail());
-		user.setPhoneNo(user.getPhoneNo());
-		user.setUserId(id);
 		user.setAddresses(user.getAddresses());
+		user.setUserId(id);
 		repo.saveAndFlush(user);
 	}
 

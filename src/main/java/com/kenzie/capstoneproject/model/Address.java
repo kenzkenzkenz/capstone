@@ -34,11 +34,11 @@ public class Address {
 	@Column(name="state")
 	private String state;
 	
-	@Column(name="country")
-	private String country;
-	
 	@Column(name="zip")
 	private String zip;
+	
+	@Column(name="country")
+	private String country;
 	
 	@Column(name="isShipping")
 	private Boolean isShipping;
@@ -46,9 +46,11 @@ public class Address {
 	@Column(name="isBilling")
 	private Boolean isBilling;
 	
-	//THIS LINKS TO CORRESPONDING USER
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "userId", nullable=false)
-	private User user;
+	@Column(name="phoneNumber")
+	private String phoneNumber;
+	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="userId", nullable=false)
+    private User user;
 	
 }

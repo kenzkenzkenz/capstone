@@ -35,8 +35,10 @@ public class OrderItemService {
 	
 	//PUT order item
 	public void updateOrderItem(OrderItem orderItem, Integer id) {
-		orderItem.setQuantity(orderItem.getQuantity());
 		orderItem.setOrderItemId(id);
+		orderItem.setQuantity(orderItem.getQuantity());
+		orderItem.setProduct(orderItem.getProduct());
+		orderItem.setTotalOrder(orderItem.getTotalOrder());
 		repo.saveAndFlush(orderItem);
 	}
 

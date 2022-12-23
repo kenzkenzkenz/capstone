@@ -40,6 +40,8 @@ public class TotalOrderService {
 		totalOrder.setTrackingId(totalOrder.getTrackingId());
 		totalOrder.setTotalPrice(totalOrder.getTotalPrice());
 		totalOrder.setOrderStatus(totalOrder.getOrderStatus());
+		
+		totalOrder.setOrderItems(totalOrder.getOrderItems());
 		totalOrder.setUser(totalOrder.getUser());
 		totalOrder.setTotalOrderId(id);
 		repo.saveAndFlush(totalOrder);

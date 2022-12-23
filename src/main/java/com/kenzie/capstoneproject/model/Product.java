@@ -1,20 +1,11 @@
 package com.kenzie.capstoneproject.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,11 +22,11 @@ public class Product {
 	@Column(name="productId")
 	private Integer productId;
 	
-	@Column(name="productQuantity")
-	private Integer productQuantity;
-	
 	@Column(name="productName")
 	private String productName;
+	
+	@Column(name="productStock")
+	private Integer productStock;
 	
 	@Column(name="blobs")
 	private String blobs = "Cloud link goes here.";

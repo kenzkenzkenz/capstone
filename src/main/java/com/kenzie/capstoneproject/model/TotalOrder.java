@@ -3,11 +3,10 @@ package com.kenzie.capstoneproject.model;
 import java.util.*;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,12 +30,12 @@ public class TotalOrder {
 	@Column(name="orderStatus")
 	private String orderStatus;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "userId")
-	private User user; //foreign key to user
-	
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "totalOrder", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "totalOrder")//orphanRemoval=true leads to error??
     private List<OrderItem> orderItems;
+    
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId", nullable=false)
+	private User user;
 	
 //	@OneToOne
 //	private Address billingAddress; //foreign key to address

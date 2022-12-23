@@ -36,12 +36,13 @@ public class ProductService {
 	
 	//PUT product
 	public void updateProduct(Product product, Integer id) {
-		product.setProductQuantity(product.getProductQuantity());
+		product.setProductId(id);
 		product.setProductName(product.getProductName());
+		product.setProductStock(product.getProductStock());
 		product.setBlobs(product.getBlobs());
 		product.setPricePerUnit(product.getPricePerUnit());
 		product.setProductDesc(product.getProductDesc());
-		product.setProductId(id);
+
 		repo.saveAndFlush(product);
 	}
 

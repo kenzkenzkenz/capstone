@@ -6,12 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kenzie.capstoneproject.model.Address;
 import com.kenzie.capstoneproject.repo.AddressRepository;
-import com.kenzie.capstoneproject.repo.UserRepository;
-
-import com.kenzie.capstoneproject.model.User;
-import com.kenzie.capstoneproject.service.UserService;
-import com.kenzie.capstoneproject.model.Address;
-
 
 @Service
 public class AddressService {
@@ -38,10 +32,11 @@ public class AddressService {
 		address.setStreet(address.getStreet());
 		address.setCity(address.getCity());
 		address.setState(address.getState());
-		address.setCountry(address.getCountry());
 		address.setZip(address.getZip());
+		address.setCountry(address.getCountry());
 		address.setIsShipping(address.getIsShipping());
 		address.setIsBilling(address.getIsBilling());
+		address.setPhoneNumber(address.getPhoneNumber());
 		address.setAddressId(id);
 		address.setUser(address.getUser());
 		repo.saveAndFlush(address);

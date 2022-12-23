@@ -16,32 +16,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kenzie.capstoneproject.model.Address;
-import com.kenzie.capstoneproject.model.User;
 import com.kenzie.capstoneproject.service.AddressService;
-import com.kenzie.capstoneproject.service.UserService;
 
 @RestController
 public class AddressController {
 	@Autowired
 	private AddressService service;
+	
 	@GetMapping("/address")
 	public List<Address> listALL(){
 		System.out.println("Testing");
 		return service.listAllAddress();
 	}	
+//	@GetMapping("/address/{id}")
+//	public Optional<Address> getUserById(@PathVariable Integer id){
+//		try {
+//		Optional<Address> address=service.getAddressById(id);
+//		System.out.println(address);
+//		return address;//200
+//		}catch(NoSuchElementException e) {
+//			return null;//404
+//		}
+//	}
+	
 	@GetMapping("/address/{id}")
-	public Optional<Address> getUserById(@PathVariable Integer id){
-		try {
-		Optional<Address> address=service.getAddressById(id);
-		System.out.println(address);
-		return address;//200
-		}catch(NoSuchElementException e) {
-			return null;//404
-		}
+    public ResponseEntity<Optional<Address>> selectAddressById(@PathVariable Integer id){
+        try {
+            Optional<Address> foundAddress = service.getAddressById(id);
+            return new ResponseEntity<>(foundAddress, HttpStatus.OK);
+        } catch(NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 	}
 
-	@PostMapping("/address") //how to link this method to a particular userId??
-	public void addAddress(@RequestBody Address address) {	////NOT WORKING//////
+	@PostMapping("/address")
+	public void addAddress(@RequestBody Address address) {
 		service.createAddress(address);
 	}
 	
