@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kenzie.capstoneproject.model.Address;
 import com.kenzie.capstoneproject.model.TotalOrder;
 import com.kenzie.capstoneproject.service.TotalOrderService;
 
@@ -28,14 +29,13 @@ public class TotalOrderController {
 		return service.listAllTotalOrder();
 	}	
 	@GetMapping("/totalOrder/{id}")
-	public Optional<TotalOrder> getTotalOrderById(@PathVariable Integer id){
-		try {
-		Optional<TotalOrder> totalOrder=service.getTotalOrderById(id);
-		System.out.println(totalOrder);
-		return totalOrder;//200
-		}catch(NoSuchElementException e) {
-			return null;//404
-		}
+    public ResponseEntity<Optional<TotalOrder>> selectTotalOrderById(@PathVariable Integer id){
+        try {
+            Optional<TotalOrder> foundTotalOrder = service.getTotalOrderById(id);
+            return new ResponseEntity<>(foundTotalOrder, HttpStatus.OK);
+        } catch(NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 	}
 	@PostMapping("/totalOrder")
 	public void addTotalOrder(@RequestBody TotalOrder totalOrder) {

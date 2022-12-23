@@ -17,12 +17,12 @@ public class OrderItem {
 	
 	@Column(name="quantity")
 	private Integer quantity;
-	
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="productId", nullable=false)
+    
+    @ManyToOne
+    @JoinColumn(name ="productId", nullable=false)
     private Product product;
-	
-	@ManyToOne
+    
+    @ManyToOne
 	@JoinColumn(name = "totalOrderId", nullable=false)
 	private TotalOrder totalOrder;
 	

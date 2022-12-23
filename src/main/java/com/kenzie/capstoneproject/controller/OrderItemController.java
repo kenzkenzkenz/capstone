@@ -26,17 +26,18 @@ public class OrderItemController {
 	public List<OrderItem> listALL(){
 		System.out.println("Testing");
 		return service.listAllOrderItem();
-	}	
+	}
+	
 	@GetMapping("/orderItem/{id}")
-	public Optional<OrderItem> getOrderItemById(@PathVariable Integer id){
+	public ResponseEntity<Optional<OrderItem>>selectOrderItemById(@PathVariable Integer id){
 		try {
-		Optional<OrderItem> orderItem=service.getOrderItemById(id);
-		System.out.println(orderItem);
-		return orderItem;//200
-		}catch(NoSuchElementException e) {
-			return null;//404
+			Optional<OrderItem> foundOrderItem=service.getOrderItemById(id);
+			return new ResponseEntity<>(foundOrderItem, HttpStatus.OK);
+		} catch(NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
 	@PostMapping("/orderItem")
 	public void addOrderItem(@RequestBody OrderItem orderItem) {
 		service.createOrderItem(orderItem);

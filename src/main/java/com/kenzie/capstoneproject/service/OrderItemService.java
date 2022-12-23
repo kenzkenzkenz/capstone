@@ -38,7 +38,7 @@ public class OrderItemService {
 		orderItem.setOrderItemId(id);
 		orderItem.setQuantity(orderItem.getQuantity());
 		orderItem.setProduct(orderItem.getProduct());
-		orderItem.setTotalOrder(orderItem.getTotalOrder());
+		//orderItem.setTotalOrder(orderItem.getTotalOrder());
 		repo.saveAndFlush(orderItem);
 	}
 

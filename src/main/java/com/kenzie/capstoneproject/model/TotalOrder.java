@@ -3,6 +3,8 @@ package com.kenzie.capstoneproject.model;
 import java.util.*;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,10 +32,11 @@ public class TotalOrder {
 	@Column(name="orderStatus")
 	private String orderStatus;
 	
-    @OneToMany(mappedBy="totalOrder", fetch = FetchType.LAZY)//orphanRemoval=true leads to error??
+	@JsonIgnore
+    @OneToMany(mappedBy="totalOrder", fetch = FetchType.LAZY)//orphanRemoval=true leads to error
     private List<OrderItem> orderItems;
     
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "userId", nullable=false)
 	private User user;
 	

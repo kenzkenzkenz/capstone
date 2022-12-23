@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kenzie.capstoneproject.model.Address;
 import com.kenzie.capstoneproject.model.Product;
 import com.kenzie.capstoneproject.service.ProductService;
 
@@ -26,17 +27,18 @@ public class ProductController {
 	public List<Product> listALL(){
 		System.out.println("Testing");
 		return service.listAllProduct();
-	}	
-	@GetMapping("/product/{id}")
-	public Optional<Product> getProductById(@PathVariable Integer id){
-		try {
-		Optional<Product> product=service.getProductById(id);
-		System.out.println(product);
-		return product;//200
-		}catch(NoSuchElementException e) {
-			return null;//404
-		}
 	}
+	
+	@GetMapping("/product/{id}")
+    public ResponseEntity<Optional<Product>> selectProductById(@PathVariable Integer id){
+        try {
+            Optional<Product> foundProduct = service.getProductById(id);
+            return new ResponseEntity<>(foundProduct, HttpStatus.OK);
+        } catch(NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+	}
+	
 	@PostMapping("/product")
 	public void addProduct(@RequestBody Product product) {
 		service.createProduct(product);
