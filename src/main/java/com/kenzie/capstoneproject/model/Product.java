@@ -2,6 +2,7 @@ package com.kenzie.capstoneproject.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,8 +45,8 @@ public class Product {
 	private String productDesc;
 	
     @JsonIgnore
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, orphanRemoval=true)
-    private List<OrderItem> orderItems;
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Bundle> bundles;
 	
 	
 }

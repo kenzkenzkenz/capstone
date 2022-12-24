@@ -23,7 +23,7 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping("/user")
+	@GetMapping("/admin/user")
 	public List<User> listALL(){
 		System.out.println("Testing");
 		return service.listAllUser();
@@ -40,7 +40,7 @@ public class UserController {
 //		}
 //	}
 	
-	@GetMapping("/user/{id}")
+	@GetMapping("/admin/user/{id}")
     public ResponseEntity<Optional<User>> selectUserById(@PathVariable Integer id){
         try {
             Optional<User> foundUser = service.getUserById(id);

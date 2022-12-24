@@ -33,8 +33,8 @@ public class TotalOrder {
 	private String orderStatus;
 	
 	@JsonIgnore
-    @OneToMany(mappedBy="totalOrder", fetch = FetchType.LAZY)//orphanRemoval=true leads to error
-    private List<OrderItem> orderItems;
+    @OneToMany(mappedBy="totalOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL)//orphanRemoval=true leads to error
+    private List<Bundle> bundles;
     
 	@ManyToOne
 	@JoinColumn(name = "userId", nullable=false)

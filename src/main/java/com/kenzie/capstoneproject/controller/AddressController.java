@@ -27,8 +27,9 @@ public class AddressController {
 	public List<Address> listALL(){
 		System.out.println("Testing");
 		return service.listAllAddress();
-	}	
-//	@GetMapping("/address/{id}")
+	}
+	
+//	@GetMapping("/address/{id}") //FAULTY!ERROR
 //	public Optional<Address> getUserById(@PathVariable Integer id){
 //		try {
 //		Optional<Address> address=service.getAddressById(id);

@@ -37,10 +37,10 @@ public class User {
 	private String role; //can be either customer or admin
     
     @JsonIgnore
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval=true)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> addresses;
     
     @JsonIgnore
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY, orphanRemoval=true)
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<TotalOrder> totalOrders;
 }

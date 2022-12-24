@@ -12,6 +12,7 @@ import com.kenzie.capstoneproject.model.Product;
 public class ProductService {
 	@Autowired
 	private ProductRepository repo;
+	
 
 	//READ all product
 	public List<Product> listAllProduct() {
@@ -42,7 +43,6 @@ public class ProductService {
 		product.setBlobs(product.getBlobs());
 		product.setPricePerUnit(product.getPricePerUnit());
 		product.setProductDesc(product.getProductDesc());
-
 		repo.saveAndFlush(product);
 	}
 

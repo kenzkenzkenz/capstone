@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="orderItem")
-public class OrderItem {
+@Table(name="bundle")
+public class Bundle {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="orderItemId")
-	private Integer orderItemId;
+	@Column(name="bundleId")
+	private Integer bundleId;
 	
 	@Column(name="quantity")
 	private Integer quantity;

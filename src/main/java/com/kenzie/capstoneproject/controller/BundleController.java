@@ -15,43 +15,44 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kenzie.capstoneproject.model.OrderItem;
-import com.kenzie.capstoneproject.service.OrderItemService;
+import com.kenzie.capstoneproject.model.Bundle;
+import com.kenzie.capstoneproject.service.BundleService;
 
 @RestController
-public class OrderItemController {
+public class BundleController {
 	@Autowired
-	private OrderItemService service;	
-	@GetMapping("/orderItem")
-	public List<OrderItem> listALL(){
+	private BundleService service;
+	
+	@GetMapping("/bundle")
+	public List<Bundle> listALL(){
 		System.out.println("Testing");
-		return service.listAllOrderItem();
+		return service.listAllBundle();
 	}
 	
-	@GetMapping("/orderItem/{id}")
-	public ResponseEntity<Optional<OrderItem>>selectOrderItemById(@PathVariable Integer id){
+	@GetMapping("/bundle/{id}")
+	public ResponseEntity<Optional<Bundle>>selectBundleById(@PathVariable Integer id){
 		try {
-			Optional<OrderItem> foundOrderItem=service.getOrderItemById(id);
-			return new ResponseEntity<>(foundOrderItem, HttpStatus.OK);
+			Optional<Bundle> foundBundle=service.getBundleById(id);
+			return new ResponseEntity<>(foundBundle, HttpStatus.OK);
 		} catch(NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
-	@PostMapping("/orderItem")
-	public void addOrderItem(@RequestBody OrderItem orderItem) {
-		service.createOrderItem(orderItem);
+	@PostMapping("/bundle")
+	public void addBundle(@RequestBody Bundle bundle) {
+		service.createBundle(bundle);
 	}
 	
-	@DeleteMapping("/orderItem/{id}")
-	public void deleteOrderItem(@PathVariable Integer id) {
-		service.deleteOrderItem(id);
+	@DeleteMapping("/bundle/{id}")
+	public void deleteBundle(@PathVariable Integer id) {
+		service.deleteBundle(id);
 	}
 	
 	//just added for the update method
-	@PutMapping("/orderItem/{id}")
-	public void updateOrderItem(@RequestBody OrderItem orderItem, @PathVariable Integer id) {
-		service.updateOrderItem(orderItem, id);
+	@PutMapping("/bundle/{id}")
+	public void updateBundle(@RequestBody Bundle bundle, @PathVariable Integer id) {
+		service.updateBundle(bundle, id);
 	}
 	
 	

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kenzie.capstoneproject.model.Address;
 import com.kenzie.capstoneproject.model.TotalOrder;
 import com.kenzie.capstoneproject.service.TotalOrderService;
 
